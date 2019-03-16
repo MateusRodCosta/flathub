@@ -1,0 +1,22 @@
+From e23d5a20a0bf4fb9e35580bb4f49a62a9ae69f81 Mon Sep 17 00:00:00 2001
+From: Matias De lellis <mati86dl@gmail.com>
+Date: Tue, 12 Mar 2019 08:18:07 -0300
+Subject: [PATCH] Rename dbus id to reverse-DNS convention. Issue #117
+
+---
+ src/pragha.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/pragha.c b/src/pragha.c
+index a26379f0..12aa0778 100644
+--- a/src/pragha.c
++++ b/src/pragha.c
+@@ -1285,7 +1285,7 @@ PraghaApplication *
+ pragha_application_new ()
+ {
+ 	return g_object_new (PRAGHA_TYPE_APPLICATION,
+-	                     "application-id", "org.pragha",
++	                     "application-id", "io.github.pragha_music_player",
+ 	                     "flags", G_APPLICATION_HANDLES_COMMAND_LINE | G_APPLICATION_HANDLES_OPEN,
+ 	                     NULL);
+ }
