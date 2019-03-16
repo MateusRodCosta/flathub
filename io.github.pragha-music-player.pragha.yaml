@@ -1,4 +1,4 @@
-app-id: io.github.pragha_music_player.pragha
+app-id: io.github.pragha_music_player.Pragha
 runtime: org.gnome.Platform
 runtime-version: '3.30'
 sdk: org.gnome.Sdk
