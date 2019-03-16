@@ -7,7 +7,7 @@ finish-args:
   - --socket=x11
   - --share=ipc
   - --socket=pulseaudio
-  - --filesystem=home
+  - --filesystem=xdg-music
 rename-desktop-file: pragha.desktop
 rename-icon: pragha
 rename-appdata-file: pragha.appdata.xml
