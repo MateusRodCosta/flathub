@@ -1,6 +1,6 @@
 app-id: io.github.pragha_music_player
 runtime: org.gnome.Platform
-runtime-version: '3.30'
+runtime-version: '3.32'
 sdk: org.gnome.Sdk
 command: pragha
 finish-args:
