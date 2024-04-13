@@ -1,0 +1,41 @@
+app-id: com.openutau.OpenUtau
+runtime: org.freedesktop.Platform
+runtime-version: &runtime-version '23.08'
+x-gl-version: &gl-version '1.4'
+x-gl-versions: &gl-versions 23.08;23.08-extra;1.4
+x-gl-merge-dirs: &gl-merge-dirs vulkan/icd.d;glvnd/egl_vendor.d;OpenCL/vendors;lib/dri;lib/d3d;vulkan/explicit_layer.d;vulkan/implicit_layer.d
+sdk: org.freedesktop.Sdk
+command: OpenUtau
+finish-args:
+  - --share=ipc
+  - --socket=x11
+  - --device=dri
+  - --socket=pulseaudio
+  - --share=network
+  - --filesystem=xdg-data/OpenUtau:create
+  - --filesystem=home
+
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.dotnet6
+build-options:
+  append-path: /usr/lib/sdk/dotnet6/bin
+  append-ld-library-path: /usr/lib/sdk/dotnet6/lib
+  env:
+      PKG_CONFIG_PATH: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig:/usr/lib/sdk/dotnet6/lib/pkgconfig
+
+
+# It's currently not possible to build from source due to nuget packges issues
+# Therefore we currently use the pre-compiled package (only x86_64)
+modules:
+  - name: OpenUtau
+    buildsystem: simple
+    build-commands:
+      - install.sh
+      - mkdir -p /app/OpenUtau
+      - cp * /app/OpenUtau
+      - mkdir -p /app/bin
+      - cd /app/bin && ln -s /app/OpenUtau/OpenUtau OpenUtau
+    sources:
+      - type: archive
+        url: https://github.com/stakira/OpenUtau/releases/download/build%2F0.1.327/OpenUtau-linux-x64.tar.gz
+        sha256: d36d974c81b5dc051644fa7b4f9cb74d1357b92ee8a8d80bde0f29e85c4542bc
