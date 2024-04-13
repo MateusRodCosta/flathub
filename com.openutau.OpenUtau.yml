@@ -32,10 +32,18 @@ modules:
     build-commands:
       - install.sh
       - mkdir -p /app/OpenUtau
-      - cp * /app/OpenUtau
+      - cp -R * /app/OpenUtau
       - mkdir -p /app/bin
       - cd /app/bin && ln -s /app/OpenUtau/OpenUtau OpenUtau
+      - mkdir -p /app/share/{applications,icons/hicolor/scalable/apps}
+      - install -Dm644 openutau.svg /app/share/icons/hicolor/scalable/apps/com.openutau.OpenUtau.svg
+      - install -Dm644 com.openutau.OpenUtau.desktop /app/share/applications/com.openutau.OpenUtau.desktop
     sources:
+      - type: file
+        url: https://github.com/stakira/OpenUtau/raw/master/Logo/openutau.svg
+        sha256: 490fd7489bb3c4225c3f2d1e96ba8320bd481da6eb031b97229dcf06997c2f5b
+      - type: file
+        path: com.openutau.OpenUtau.desktop
       - type: archive
         url: https://github.com/stakira/OpenUtau/releases/download/build%2F0.1.327/OpenUtau-linux-x64.tar.gz
         sha256: d36d974c81b5dc051644fa7b4f9cb74d1357b92ee8a8d80bde0f29e85c4542bc

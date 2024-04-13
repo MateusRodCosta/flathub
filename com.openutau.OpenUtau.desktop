@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=OpenUtau
+Exec=OpenUtau
+Icon=com.openutau.OpenUtau
+Categories=AudioVideo;Audio;Midi;
